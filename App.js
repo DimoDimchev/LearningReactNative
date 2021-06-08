@@ -1,13 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [name, setName] = useState('Dimo');
-  const [person, setPerson] = useState({name: 'Gosho', age: 40});
+  const [age, setAge] = useState(18);
 
   const clickHandler = () => {
-    setName('Pesho');
     setPerson({name: 'Mario', age: 600});
   };
 
@@ -17,11 +16,21 @@ export default function App() {
         <Text style={styles.boldText}>Hello Hello</Text>
       </View>
       <View style={styles.body}>
-        <Text>My name is {name}</Text>
-        <Text>His name is {person.name} and is {person.age} years old.</Text>
-        <View style={styles.buttonContainer}>
-          <Button title='update name' onPress={clickHandler}/>
-        </View>
+        <Text>Enter name</Text>
+        <TextInput
+          style={styles.input}
+          placeholder='e.g John Doe'
+          onChangeText={(value) => setName(value)} 
+        />
+
+        <Text>Enter age</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType='numeric'
+          placeholder='e.g 21'
+          onChangeText={(value) => setAge(value)} 
+        />
+        <Text>His name is {name} and is {age} years old.</Text>
       </View>
       <StatusBar style="auto" />
     </View>
@@ -46,8 +55,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
     padding: 20,
   },
-  buttonContainer: {
-    backgroundColor: 'red',
-    marginTop: 20,
+  input: {
+    borderWidth: 1,
+    borderColor: '#000000',
+    marginTop: 10,
+    marginBottom: 10,
+    padding: 8,
+    width: 200,
   }
 });
