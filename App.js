@@ -1,32 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   const [people, setPeople] = useState([
-    {name: 'Dimo', key: '1'},
-    {name: 'Peshi', key: '2'},
-    {name: 'Goshu', key: '3'},
-    {name: 'Moshu', key: '4'},
-    {name: 'Toshu', key: '5'},
-    {name: 'Vankata', key: '6'},
-    {name: 'Petran', key: '8'},
-    {name: 'Yoan', key: '9'},
-    {name: 'Jeremy', key: '10'},
-    {name: 'Johny', key: '11'},
+    {name: 'Dimo', id: '1'},
+    {name: 'Peshi', id: '2'},
+    {name: 'Goshu', id: '3'},
+    {name: 'Moshu', id: '4'},
+    {name: 'Toshu', id: '5'},
+    {name: 'Vankata', id: '6'},
+    {name: 'Petran', id: '8'},
+    {name: 'Yoan', id: '9'},
+    {name: 'Jeremy', id: '10'},
+    {name: 'Johny', id: '11'},
   ])
 
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <FlatList 
+        data={people}
+        keyExtractor={(item) => (item.id)}
+        numColumns={2}
+        renderItem={({item}) => (
+          <Text style={styles.item}>{item.name}</Text>
+        )}
+      />
+
+      {/* <ScrollView>
         { people.map((item) => {
           return (
-            <View style={styles.item} key={item.key}>
-              <Text>{item.name}</Text>
+            <View key={item.key}>
+              <Text style={styles.item}>{item.name}</Text>
             </View>
           )
         }) }
-      </ScrollView>
+      </ScrollView> */}
       <StatusBar style="auto" />
     </View>
   );
@@ -42,6 +51,7 @@ const styles = StyleSheet.create({
   },
   item: {
     marginTop: 24,
+    marginHorizontal: 10,
     padding:30,
     backgroundColor: 'yellow',
     fontSize: 24,
