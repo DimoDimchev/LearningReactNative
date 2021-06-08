@@ -1,37 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
-  const [name, setName] = useState('Dimo');
-  const [age, setAge] = useState(18);
-
-  const clickHandler = () => {
-    setPerson({name: 'Mario', age: 600});
-  };
+  const [people, setPeople] = useState([
+    {name: 'Dimo', key: '1'},
+    {name: 'Peshi', key: '2'},
+    {name: 'Goshu', key: '3'},
+    {name: 'Moshu', key: '4'},
+    {name: 'Toshu', key: '5'},
+    {name: 'Vankata', key: '6'},
+    {name: 'Petran', key: '8'},
+    {name: 'Yoan', key: '9'},
+    {name: 'Jeremy', key: '10'},
+    {name: 'Johny', key: '11'},
+  ])
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>Hello Hello</Text>
-      </View>
-      <View style={styles.body}>
-        <Text>Enter name</Text>
-        <TextInput
-          style={styles.input}
-          placeholder='e.g John Doe'
-          onChangeText={(value) => setName(value)} 
-        />
-
-        <Text>Enter age</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType='numeric'
-          placeholder='e.g 21'
-          onChangeText={(value) => setAge(value)} 
-        />
-        <Text>His name is {name} and is {age} years old.</Text>
-      </View>
+      <ScrollView>
+        { people.map((item) => {
+          return (
+            <View style={styles.item} key={item.key}>
+              <Text>{item.name}</Text>
+            </View>
+          )
+        }) }
+      </ScrollView>
       <StatusBar style="auto" />
     </View>
   );
@@ -40,27 +35,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40,
+    paddingHorizontal: 20,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
-  header: {
-    backgroundColor: '#141414',
-    padding: 20,
-  },
-  boldText: {
-    fontWeight: 'bold',
-    color: '#ffffff'
-  },
-  body: {
+  item: {
+    marginTop: 24,
+    padding:30,
     backgroundColor: 'yellow',
-    padding: 20,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#000000',
-    marginTop: 10,
-    marginBottom: 10,
-    padding: 8,
-    width: 200,
+    fontSize: 24,
   }
 });
