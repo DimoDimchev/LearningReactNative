@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Button, StyleSheet, TextInput } from 'react-native';
 
-export default function AddTodo({submitHandler}) {
+export default function AddTodo({ submitHandler }) {
     const [text, setText] = useState('')
 
     const changeHandler = (value) => {
-      setText(value)  
+        setText(value)
     }
     return (
         <View>
@@ -20,7 +20,7 @@ export default function AddTodo({submitHandler}) {
                 color='coral'
             />
         </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
