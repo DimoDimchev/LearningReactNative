@@ -2,10 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Alert, FlatList, Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 
-import Header from './components/header'
-import ToDoItem from './components/todoitem'
-import AddTodo from './components/addTodo'
-import Home from './screens/home'
+// importing custom components
+import Header from './components/header';
+import ToDoItem from './components/todoitem';
+import AddTodo from './components/addTodo';
+import Home from './screens/home';
+
+// importing Stack Navigation
+import Navigator from './routes/homeStack';
 
 // ToDo App
 // export default function App() {
@@ -80,7 +84,7 @@ import Home from './screens/home'
 export default function App() {
   
   return (
-    <Home/>
+    <Navigator/>
   );
 }
 
