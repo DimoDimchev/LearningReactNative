@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Alert, FlatList, Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Alert, DrawerLayoutAndroidComponent, FlatList, Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 
 // importing custom components
 import Header from './components/header';
@@ -87,4 +87,3 @@ export default function App() {
     <Navigator/>
   );
 }
-
