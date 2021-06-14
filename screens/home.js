@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Modal } from 'react-native';
 import { globalStyles } from '../styles/global';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -39,21 +39,33 @@ export default function Home({ navigation }) {
         }
     };
 
+    // function for adding new reviews
+    const addReview = (review) => {
+        review.key = Math.random().toString();
+        setReviews((currentReviews) => {
+            return [review, ...currentReviews]
+        })
+        setModalOpen(false);
+    };
+
     return (
         <View style={globalStyles.container}>
             <Modal visible={modalOpen} animationType='slide'>
-                <View style={styles.modalContent}>
-                    <MaterialIcons
-                        name='close'
-                        size={24}
-                        style={{
-                            ...styles.modalToggle, ...styles.modalClose
-                        }}
-                        onPress={toggleModal}
-                    />
-                    <ReviewForm/>
-                </View>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.modalContent}>
+                        <MaterialIcons
+                            name='close'
+                            size={24}
+                            style={{
+                                ...styles.modalToggle, ...styles.modalClose
+                            }}
+                            onPress={toggleModal}
+                        />
+                        <ReviewForm addReview={addReview} />
+                    </View>
+                </TouchableWithoutFeedback>
             </Modal>
+
 
             <MaterialIcons
                 name='add'

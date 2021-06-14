@@ -5,7 +5,7 @@ import { globalStyles } from '../styles/global';
 import { Formik } from 'formik';
 
 // create the form for adding reviews
-export default function ReviewForm() {
+export default function ReviewForm({ addReview }) {
     return (
         <View style={globalStyles.container}>
             <Formik
@@ -14,8 +14,9 @@ export default function ReviewForm() {
                     body: '',
                     rating: '',
                 }}
-                onSubmit={(values) => {
-                    console.log(values);
+                onSubmit={(values, actions) => {
+                    actions.resetForm;
+                    addReview(values);
                 }}
             >
                 {(props) => (
@@ -23,12 +24,14 @@ export default function ReviewForm() {
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Movie title'
+                            placeholderTextColor='#666562'
                             onChangeText={props.handleChange('title')}
                             value={props.values.title}
                         />
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Review body'
+                            placeholderTextColor='#666562'
                             multiline
                             onChangeText={props.handleChange('body')}
                             value={props.values.body}
@@ -36,6 +39,7 @@ export default function ReviewForm() {
                         <TextInput 
                             style={globalStyles.input}
                             placeholder='Movie rating(1-5)'
+                            placeholderTextColor='#666562'
                             keyboardType='numeric'
                             onChangeText={props.handleChange('rating')}
                             value={props.values.rating}
