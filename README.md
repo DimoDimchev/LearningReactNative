@@ -12,8 +12,6 @@ In this tutorial I learned about:
 - Validation with Yup
 
 I also built the following apps:
-### ToDo app
-  <img src="https://github.com/DimoDimchev/LearningReactNative/blob/main/assets/todoapp_showcase.gif" height=400>
-  
-### Reviews app
-  <img src="https://github.com/DimoDimchev/LearningReactNative/blob/main/assets/reviewsapp_showcase.gif" height=400>
+| ToDo App | Reviews app |
+| :--------: | :-----------: |
+| <img src="https://github.com/DimoDimchev/LearningReactNative/blob/main/assets/todoapp_showcase.gif" align='left' height=400> A simple todo list application that allows the user to add and remove tasks to their list. State hooks are used throught the app as well as various custom components and touchable components | <img src="https://github.com/DimoDimchev/LearningReactNative/blob/main/assets/reviewsapp_showcase.gif" align='left' height=400> An app for movie reviews where users can add reviews via a Formik form which is validated with Yup. This app uses various custom components, state hooks, stack navigation and more |
