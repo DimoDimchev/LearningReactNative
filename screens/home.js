@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal } from 'react-native';
 import { globalStyles } from '../styles/global';
+import { MaterialIcons } from '@expo/vector-icons';
 
 // importing card design for each review
 import Card from '../shared/card';
@@ -23,8 +24,41 @@ export default function Home({ navigation }) {
         { title: 'Lord Of The Rings: The return of the king', rating: 3, body: 'The former Fellowship members prepare for the final battle. While Frodo and Sam approach Mount Doom to destroy the One Ring, they follow Gollum, unaware of the path he is leading them to.', key: '6' },
     ]);
 
+    // state for opening and closing the modal
+    const [modalOpen, setModalOpen] = useState(false);
+
+    // function for toggling the modal
+    const toggleModal = () => {
+        if (modalOpen === true) {
+            setModalOpen(false);
+        } else {
+            setModalOpen(true);
+        }
+    };
+
     return (
         <View style={globalStyles.container}>
+            <Modal visible={modalOpen} animationType='slide'>
+                <View style={styles.modalContent}>
+                    <MaterialIcons
+                        name='close'
+                        size={24}
+                        style={{
+                            ...styles.modalToggle, ...styles.modalClose
+                        }}
+                        onPress={toggleModal}
+                    />
+                    <Text>This is a modal?</Text>
+                </View>
+            </Modal>
+
+            <MaterialIcons
+                name='add'
+                size={24}
+                style={styles.modalToggle}
+                onPress={toggleModal}
+            />
+
             {/* <Button title='Review details' onPress={pressHandler}/> */}
             <FlatList
                 data={reviews}
@@ -40,3 +74,19 @@ export default function Home({ navigation }) {
         </View>
     );
 }
+
+export const styles = StyleSheet.create({
+    modalToggle: {
+        marginBottom: 10,
+        padding: 10,
+        alignSelf: 'center'
+
+    },
+    modalClose: {
+        marginTop: 50,
+        marginBottom: 0,
+    },
+    modalContent: {
+        flex: 1,
+    }
+});
