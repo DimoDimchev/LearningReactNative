@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/global';
 
+// importing card design for each review
+import Card from '../shared/card';
+
 // Home screen
 export default function Home({ navigation }) {
     // function that navigates to the review details screen
@@ -24,11 +27,13 @@ export default function Home({ navigation }) {
                 data={reviews}
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => navigation.navigate('ReviewDetails', item)}>
-                        <Text style={globalStyles.titleText}>{ item.title }</Text>
+                        <Card>
+                            <Text style={globalStyles.titleText}>{item.title}</Text>
+                        </Card>
                     </TouchableOpacity>
                 )}
             />
             <StatusBar style="auto" />
         </View>
     );
-  }
+}
