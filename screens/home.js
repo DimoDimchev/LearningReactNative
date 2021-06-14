@@ -7,6 +7,9 @@ import { MaterialIcons } from '@expo/vector-icons';
 // importing card design for each review
 import Card from '../shared/card';
 
+// importing form for adding reviews
+import ReviewForm from './reviewForm';
+
 // Home screen
 export default function Home({ navigation }) {
     // function that navigates to the review details screen
@@ -48,7 +51,7 @@ export default function Home({ navigation }) {
                         }}
                         onPress={toggleModal}
                     />
-                    <Text>This is a modal?</Text>
+                    <ReviewForm/>
                 </View>
             </Modal>
 

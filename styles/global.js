@@ -15,6 +15,14 @@ export const globalStyles = StyleSheet.create({
         marginVertical: 8,
         lineHeight: 20,
     },
+    input: {
+        borderWidth: 1,
+        borderColor: '#dddddd',
+        marginTop: 30,
+        padding: 10,
+        fontSize: 18,
+        borderRadius: 6,
+    }
   });
 
 export const images = {
