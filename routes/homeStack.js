@@ -8,7 +8,7 @@ const screens = {
     Home: {
         screen: Home,
         navigationOptions: {
-            title: 'My favourite movies',
+            title: 'Movie reviews',
         }
     },
     ReviewDetails: {
