@@ -31,7 +31,7 @@ export default function Home({ navigation }) {
             .then(response => response.json())
             .then(data => {
                 APIreviews = Object.keys(data).map(key => {
-                    return {key: key, title: data[key]["title"], rating: data[key]["rating"], body: data[key]["body"]} 
+                    return { key: key, title: data[key]["title"], rating: data[key]["rating"], body: data[key]["body"] }
                 });
                 setReviews(APIreviews);
             })
@@ -54,11 +54,13 @@ export default function Home({ navigation }) {
 
     // function for adding new reviews
     const addReview = (review) => {
-        review.key = Math.random().toString();
-        setReviews((currentReviews) => {
-            return [review, ...currentReviews]
+        fetch(baseURI + 'reviews.json', {
+            method: "POST",
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify(review)
         })
         setModalOpen(false);
+        setReviews(getReviews);
     };
 
     return (
